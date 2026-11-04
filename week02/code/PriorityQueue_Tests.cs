@@ -8,7 +8,7 @@ public class PriorityQueueTests
     [TestMethod]
     // Scenario: Add items with different priorities and dequeue the highest priority item
     // Expected Result: dequeued item is highest priority
-    // Defect(s) Found: dequeue did not return highest priority item. loop was bound incorrectly;
+    // Defect(s) Found: dequeue did not return highest priority item. loop was bound incorrectly; passes after removing -1 
     public void HighestPriorityLeavesFirst()
     {
         var priorityQueue = new PriorityQueue();
@@ -22,7 +22,7 @@ public class PriorityQueueTests
     [TestMethod]
     // Scenario: multiple items have same priority
     // Expected Result: the first added gets dequeued
-    // Defect(s) Found: last item added was removed; highest index should only update when > not >= to highest found in loop.
+    // Defect(s) Found: last item added was removed; highest index should only update when > not >= to highest found in loop. passes after updating operator.
     public void EqualPrioritiesFollowArrivalOrder()
     {
         var priorityQueue = new PriorityQueue();
@@ -33,9 +33,9 @@ public class PriorityQueueTests
     }
 
     [TestMethod]
-    // Scenario: multiple items have same priority
-    // Expected Result: the first added gets dequeued
-    // Defect(s) Found: failed with multiple dequeue attempts; dequeue was missing RemoveAt
+    // Scenario: dequeueing removes item from queue 
+    // Expected Result: items are removed in correct order
+    // Defect(s) Found: failed with multiple dequeue attempts; dequeue was missing RemoveAt, passes after adding.
     public void DequeuedItemIsRemoved()
     {
         var priorityQueue = new PriorityQueue();
@@ -51,7 +51,7 @@ public class PriorityQueueTests
     [TestMethod]
     // Scenario: empty queue should error
     // Expected Result: exception thrown, error message returned
-    // Defect(s) Found: 
+    // Defect(s) Found: none, runs successfully
     public void EmptyQueueException()
     {
         var priorityQueue = new PriorityQueue();
